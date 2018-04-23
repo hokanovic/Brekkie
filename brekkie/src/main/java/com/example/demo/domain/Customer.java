@@ -5,17 +5,17 @@ public class Customer {
     private String emai;
     private String orgId;
     private String adress;
-    private String shippingAdress;
+    private String deliveryAdress;
     private String contactInfo;
     private String name;
 
 
-    public Customer(int id, String emai, String orgId, String adress, String shippingAdress, String contactInfo, String name) {
+    public Customer(int id, String emai, String orgId, String adress, String deliveryAdress, String contactInfo, String name) {
         this.id = id;
         this.emai = emai;
         this.orgId = orgId;
         this.adress = adress;
-        this.shippingAdress = shippingAdress;
+        this.deliveryAdress = deliveryAdress;
         this.contactInfo = contactInfo;
         this.name = name;
     }
@@ -53,11 +53,11 @@ public class Customer {
     }
 
     public String getShippingAdress() {
-        return shippingAdress;
+        return deliveryAdress;
     }
 
-    public void setShippingAdress(String shippingAdress) {
-        this.shippingAdress = shippingAdress;
+    public void setShippingAdress(String deliveryAdress) {
+        this.deliveryAdress = deliveryAdress;
     }
 
     public String getContactInfo() {
