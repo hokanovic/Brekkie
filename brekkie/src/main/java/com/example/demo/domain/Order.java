@@ -2,9 +2,7 @@ package com.example.demo.domain;
 
 public class Order {
     private int id;
-    private int orderLines;
     private int customerId;
-    private int sum;
     private String orderDate;
     private String paymentOption;
     private String marking;
@@ -12,11 +10,9 @@ public class Order {
     private String deliveryDate;
     private String deliveryTime;
 
-    public Order(int id, int orderLines, int customerId, int sum, String orderDate, String paymentOption, String marking, String experationDate, String deliveryDate, String deliveryTime) {
+    public Order(int id, int customerId, String orderDate, String paymentOption, String marking, String experationDate, String deliveryDate, String deliveryTime) {
         this.id = id;
-        this.orderLines = orderLines;
         this.customerId = customerId;
-        this.sum = sum;
         this.orderDate = orderDate;
         this.paymentOption = paymentOption;
         this.marking = marking;
@@ -33,28 +29,12 @@ public class Order {
         this.id = id;
     }
 
-    public int getOrderLines() {
-        return orderLines;
-    }
-
-    public void setOrderLines(int orderLines) {
-        this.orderLines = orderLines;
-    }
-
     public int getCustomerId() {
         return customerId;
     }
 
     public void setCustomerId(int customerId) {
         this.customerId = customerId;
-    }
-
-    public int getSum() {
-        return sum;
-    }
-
-    public void setSum(int sum) {
-        this.sum = sum;
     }
 
     public String getOrderDate() {
