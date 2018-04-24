@@ -10,11 +10,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class SQLQuery {
-    @Value("${spring.datasource.url}")
+    /*@Value("${spring.datasource.url}")
     public String dbUrl;
 
     @Autowired
-    public DataSource dataSource;
+    public DataSource dataSource;*/
 
     /*public String getProductName() throws SQLException {
         String output = "failed";
