@@ -131,6 +131,23 @@ public class JDBCRepository implements ShopRepository {
         }
     }
 
+    //Adds OrderLines to database
+    @Override
+    public void addOrderLines(int id, int order_id, int breakfastBasket_id, int quantity) {
+        try (Connection conn = dataSource.getConnection();
+             PreparedStatement ps = conn.prepareStatement("INSERT INTO " +
+                     "OrderLines(id, order_id, breakfastBasket_id, quantity " +
+                     "VALUES (?,?,?,?) ", new String[]{"id"})) {
+            ps.setInt(1, id);
+            ps.setInt(2, order_id);
+            ps.setInt(3,breakfastBasket_id);
+            ps.setInt(3,quantity);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     //Creates new Orders from database
     private Order rsOrder(ResultSet rs) throws SQLException {
         return new Order(rs.getInt("id"), rs.getInt("customerId"), rs.getString("orderDate"),
