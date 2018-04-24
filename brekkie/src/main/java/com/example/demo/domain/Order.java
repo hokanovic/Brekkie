@@ -1,5 +1,8 @@
 package com.example.demo.domain;
 
+import java.sql.Date;
+import java.sql.Time;
+
 public class Order {
     private int id;
     private int customerId;
@@ -8,12 +11,12 @@ public class Order {
     private boolean allergy;
     private String marking;
     private String experationDate;
-    private String deliveryDate;
-    private String deliveryTime;
+    private Date deliveryDate;
+    private Time deliveryTime;
 
     public Order(int id, int customerId, String orderDate,
                  String paymentOption, boolean allergy, String marking,
-                 String experationDate, String deliveryDate, String deliveryTime) {
+                 String experationDate, Date deliveryDate, Time deliveryTime) {
         this.id = id;
         this.customerId = customerId;
         this.orderDate = orderDate;
@@ -81,19 +84,19 @@ public class Order {
         this.experationDate = experationDate;
     }
 
-    public String getDeliveryDate() {
+    public Date getDeliveryDate() {
         return deliveryDate;
     }
 
-    public void setDeliveryDate(String deliveryDate) {
+    public void setDeliveryDate(Date deliveryDate) {
         this.deliveryDate = deliveryDate;
     }
 
-    public String getDeliveryTime() {
+    public Time getDeliveryTime() {
         return deliveryTime;
     }
 
-    public void setDeliveryTime(String deliveryTime) {
+    public void setDeliveryTime(Time deliveryTime) {
         this.deliveryTime = deliveryTime;
     }
 }

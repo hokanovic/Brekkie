@@ -3,16 +3,17 @@ package com.example.demo.domain;
 public class Customer {
     private int id;
     private String companyName;
+    private String email;
     private String orgId;
     private String reference;
     private String phoneNumber;
-    private String email;
     private String invoiceAdress;
     private String invoicePostalTown;
     private String invoicePostNumber;
     private String deliveryAdress;
     private String deliveryPostalTown;
     private String deliveryPostNumber;
+
 
     public Customer(int id, String companyName, String orgId, String reference,
                     String phoneNumber, String email, String invoiceAdress,
@@ -39,6 +40,7 @@ public class Customer {
     public void setId(int id) {
         this.id = id;
     }
+
 
     public String getCompanyName() {
         return companyName;
