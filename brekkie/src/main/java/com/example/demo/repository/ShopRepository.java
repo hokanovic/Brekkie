@@ -33,4 +33,6 @@ public interface ShopRepository {
 
     void addProductCategory(int id,String name);
 
+    void addBreakfastBag_ProductCategory(int id, int Breakfastbag_FK,int ProductCategory_FK);
+
 }
