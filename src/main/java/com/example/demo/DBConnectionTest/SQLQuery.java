@@ -16,7 +16,7 @@ public class SQLQuery {
     @Autowired
     public DataSource dataSource;
 
-    public String getProductName() throws SQLException {
+    /*public String getProductName() throws SQLException {
         String output = "failed";
         try (Connection connection = dataSource.getConnection()) {
             Statement stmt = connection.createStatement();
@@ -27,5 +27,5 @@ public class SQLQuery {
             }
         }
         return output;
-    }
+    }*/
 }
