@@ -15,6 +15,8 @@ public interface ShopRepository {
 
     List<BreakfastBag> listBreakfastBag();
 
+    List<ProductCategory> listProductCategory();
+
     void addCustomer(int id, String email, String orgId, String adress, String deliveryAdress,
                      String contactInfo, String name);
 

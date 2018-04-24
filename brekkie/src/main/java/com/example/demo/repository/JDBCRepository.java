@@ -14,6 +14,7 @@ public class JDBCRepository implements ShopRepository {
     private List<Customer> customerList = new ArrayList<>();
     private List<OrderLines> orderLinesList = new ArrayList<>();
     private List<BreakfastBag> breakfastBagsList = new ArrayList<>();
+    private List<ProductCategory> productCategoryList = new ArrayList<>();
 
     @Override
     //Creates a list of all Orders from database
@@ -67,6 +68,19 @@ public class JDBCRepository implements ShopRepository {
                              "breakfastBasket_id, quantity FROM OrderLines")) {
             while (rs.next()) orderLinesList.add(rsOrderLines(rs));
             return orderLinesList;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    //Creates a list of all ProductCategory from database
+    @Override
+    public List<ProductCategory> listProductCategory() {
+        try (Connection conn = dataSource.getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery("SELECT  id, name FROM OrderLines")) {
+            while (rs.next()) productCategoryList.add(rsProductCategory(rs));
+            return productCategoryList;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -200,5 +214,10 @@ public class JDBCRepository implements ShopRepository {
     //Creates new BrekfastBag from database
     private BreakfastBag rsBreakfastBag(ResultSet rs) throws SQLException {
         return new BreakfastBag(rs.getInt("id"),rs.getString("name"));
+    }
+
+    //Creates new ProductCategory from database
+    private ProductCategory rsProductCategory(ResultSet rs) throws SQLException {
+        return new ProductCategory(rs.getInt("id"),rs.getString("name"));
     }
 }
