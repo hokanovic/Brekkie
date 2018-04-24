@@ -1,5 +1,6 @@
 package com.example.demo.repository;
 
+import com.example.demo.domain.Customer;
 import com.example.demo.domain.Order;
 import com.example.demo.domain.Product;
 
@@ -12,6 +13,7 @@ public class JDBCRepository implements ShopRepository {
     private DataSource dataSource;
     private List<Order> orderList = new ArrayList<>();
     private List<Product> productList = new ArrayList<>();
+    private List<Customer> customerList = new ArrayList<>();
 
     @Override
     //Creates a list of all Orders from database
@@ -37,6 +39,20 @@ public class JDBCRepository implements ShopRepository {
              ResultSet rs = stmt.executeQuery("SELECT id, name, productCategory FROM Product")) {
             while (rs.next()) productList.add(rsProduct(rs));
             return productList;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    //Creates a list of all Customers from database
+    @Override
+    public List<Customer> listCustomers() {
+        try (Connection conn = dataSource.getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery("SELECT  id,email, orgId, adress, deliveryAdress," +
+                     " contactInfo, name FROM Customer")) {
+            while (rs.next()) customerList.add(rsCustomer(rs));
+            return customerList;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -88,5 +104,12 @@ public class JDBCRepository implements ShopRepository {
     //Creates new Products from database
     private Product rsProduct(ResultSet rs) throws SQLException {
         return new Product(rs.getInt("id"), rs.getString("name"), rs.getInt("productCategory"));
+    }
+
+    //Creates new Customer from database
+    private Customer rsCustomer(ResultSet rs) throws SQLException {
+        return new Customer(rs.getInt("id"),rs.getString("email"),rs.getString("orgId"),
+                rs.getString("adress"),rs.getString("deliveryAdress"),
+                rs.getString("contactInfo"), rs.getString("name"));
     }
 }

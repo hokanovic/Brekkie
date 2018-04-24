@@ -2,7 +2,7 @@ package com.example.demo.domain;
 
 public class Customer {
     private int id;
-    private String emai;
+    private String email;
     private String orgId;
     private String adress;
     private String deliveryAdress;
@@ -10,9 +10,9 @@ public class Customer {
     private String name;
 
 
-    public Customer(int id, String emai, String orgId, String adress, String deliveryAdress, String contactInfo, String name) {
+    public Customer(int id, String email, String orgId, String adress, String deliveryAdress, String contactInfo, String name) {
         this.id = id;
-        this.emai = emai;
+        this.email = email;
         this.orgId = orgId;
         this.adress = adress;
         this.deliveryAdress = deliveryAdress;
@@ -29,11 +29,11 @@ public class Customer {
     }
 
     public String getEmai() {
-        return emai;
+        return email;
     }
 
-    public void setEmai(String emai) {
-        this.emai = emai;
+    public void setEmai(String email) {
+        this.email = email;
     }
 
     public String getOrgId() {

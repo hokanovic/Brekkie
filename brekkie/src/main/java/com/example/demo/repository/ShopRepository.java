@@ -1,4 +1,5 @@
 package com.example.demo.repository;
+import com.example.demo.domain.Customer;
 import com.example.demo.domain.Order;
 import com.example.demo.domain.Product;
 
@@ -7,6 +8,7 @@ import java.util.List;
 public interface ShopRepository {
     List<Order> listOrders();
     List<Product> listProducts();
+    List<Customer> listCustomers();
 
     void addOrder(int id, int customerId, String orderDate, String paymentOption, String marking,
                   String experationDate, String deliveryDate, String deliveryTime);
