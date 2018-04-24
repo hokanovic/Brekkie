@@ -19,6 +19,9 @@
 	</parent>
 
 	<properties>
+		<processTypes>
+			<web>java $JAVA_OPTS -cp target/classes:target/dependency/* Main</web>
+		</processTypes>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>9</java.version>
