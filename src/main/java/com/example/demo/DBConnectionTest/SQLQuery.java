@@ -11,13 +11,13 @@ import java.sql.Statement;
 
 public class SQLQuery {
     @Value("${spring.datasource.url}")
-    private String dbUrl;
+    public String dbUrl;
 
     @Autowired
-    private DataSource dataSource;
+    public DataSource dataSource;
 
     public String getProductName() throws SQLException {
-        String output = "";
+        String output = "failed";
         try (Connection connection = dataSource.getConnection()) {
             Statement stmt = connection.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM public.\"Product\"");
