@@ -23,7 +23,12 @@ public class brekkieController {
         }
 
     @GetMapping("/alternativ")
-    public ModelAndView seeBreakfastAlternatives(){
+    public ModelAndView seeBreakfastAlternatives() throws SQLException {
+        //DBConnectionTest for debugging purposes
+        SQLQuery test = new SQLQuery();
+        String productName = test.getProductName();
+        System.out.println(productName);
+        //End of DBConnectionTest
         return new ModelAndView("displayBags.html");
     }
 }
