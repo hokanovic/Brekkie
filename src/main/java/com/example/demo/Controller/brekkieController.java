@@ -12,16 +12,14 @@ import java.sql.SQLException;
 
 @Controller
 public class brekkieController {
-    @Value("${spring.datasource.url}")
-    private String dbUrl;
 
     @GetMapping("/frukost")
         public ModelAndView orderBreakfast() throws SQLException {
 
         //DBConnectionTest for debugging purposes
-        SQLQuery test = new SQLQuery();
+        /*SQLQuery test = new SQLQuery();
         String productName = test.getProductName();
-        System.out.println(productName);
+        System.out.println(productName);*/
         //End of DBConnectionTest
 
         return new ModelAndView("orderForm.html");
@@ -31,9 +29,9 @@ public class brekkieController {
     public ModelAndView seeBreakfastAlternatives() throws SQLException {
         System.out.println("Hello Logs!");
         //DBConnectionTest for debugging purposes
-        SQLQuery test = new SQLQuery();
+        /*SQLQuery test = new SQLQuery();
         String productName = test.getProductName();
-        System.out.println(productName);
+        System.out.println(productName);*/
         //End of DBConnectionTest
         return new ModelAndView("displayBags.html");
     }
