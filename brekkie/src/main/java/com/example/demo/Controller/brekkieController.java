@@ -12,4 +12,9 @@ public class brekkieController {
     public ModelAndView orderBreakfast(){
         return new ModelAndView("orderForm");
     }
+
+    @GetMapping("/alternativ")
+    public ModelAndView seeBreakfastAlternatives(){
+        return new ModelAndView("displayBags");
+    }
 }
