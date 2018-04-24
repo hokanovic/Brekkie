@@ -24,12 +24,6 @@ public class brekkieController {
         public ModelAndView orderBreakfast() throws SQLException {
         System.out.println("Hello OrderForm!");
 
-        //DBConnectionTest for debugging purposes
-        /*SQLQuery test = new SQLQuery();
-        String productName = test.getProductName();
-        System.out.println(productName);*/
-        //End of DBConnectionTest
-
         String productName = getProductName();
 
         System.out.println(productName);
@@ -40,12 +34,6 @@ public class brekkieController {
     @GetMapping("/alternativ")
     public ModelAndView seeBreakfastAlternatives() throws SQLException {
         System.out.println("Hello Frukostpåse!");
-
-        //DBConnectionTest for debugging purposes
-        /*SQLQuery test = new SQLQuery();
-        String productName = test.getProductName();
-        System.out.println(productName);*/
-        //End of DBConnectionTest
 
         String productName = getProductName();
 
