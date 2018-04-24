@@ -14,6 +14,7 @@ public class JDBCRepository implements ShopRepository {
     private List<Product> productList = new ArrayList<>();
 
     @Override
+    //Creates a list of all Orders from database
     public List<Order> listOrders() {
         try (Connection conn = dataSource.getConnection();
              Statement stmt = conn.createStatement();
@@ -29,6 +30,7 @@ public class JDBCRepository implements ShopRepository {
 
 
     @Override
+    //Creates a list of all Producs from database
     public List<Product> listProducts() {
         try (Connection conn = dataSource.getConnection();
              Statement stmt = conn.createStatement();
@@ -40,6 +42,7 @@ public class JDBCRepository implements ShopRepository {
         }
     }
 
+    //Adds order to database
     @Override
     public void addOrder(int id, int customerId, String orderDate, String paymentOption, String marking,
                          String experationDate, String deliveryDate, String deliveryTime) {
@@ -61,6 +64,7 @@ public class JDBCRepository implements ShopRepository {
 
     }
 
+    //Adds product to database
     @Override
     public void addProduct(int id, String name, int productCategory_id) {
         try (Connection conn = dataSource.getConnection();
@@ -75,12 +79,13 @@ public class JDBCRepository implements ShopRepository {
         }
     }
 
+    //Creates new Orders from database
     private Order rsOrder(ResultSet rs) throws SQLException {
         return new Order(rs.getInt("id"), rs.getInt("customerId"), rs.getString("orderDate"),
                 rs.getString("paymentOption"), rs.getString("marking"), rs.getString("experationDate"),
                 rs.getString("deliveryDate"), rs.getString("deliveryTime"));
     }
-
+    //Creates new Products from database
     private Product rsProduct(ResultSet rs) throws SQLException {
         return new Product(rs.getInt("id"), rs.getString("name"), rs.getInt("productCategory"));
     }
