@@ -1,9 +1,6 @@
 package com.example.demo.repository;
 
-import com.example.demo.domain.Customer;
-import com.example.demo.domain.Order;
-import com.example.demo.domain.OrderLines;
-import com.example.demo.domain.Product;
+import com.example.demo.domain.*;
 
 import java.util.List;
 
@@ -16,6 +13,7 @@ public interface ShopRepository {
 
     List<OrderLines> listOrderLines();
 
+    List<BreakfastBag> listBreakfastBag();
 
     void addCustomer(int id, String email, String orgId, String adress, String deliveryAdress,
                      String contactInfo, String name);

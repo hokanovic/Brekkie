@@ -1,9 +1,6 @@
 package com.example.demo.repository;
 
-import com.example.demo.domain.Customer;
-import com.example.demo.domain.Order;
-import com.example.demo.domain.OrderLines;
-import com.example.demo.domain.Product;
+import com.example.demo.domain.*;
 
 import javax.sql.DataSource;
 import java.sql.*;
@@ -16,6 +13,7 @@ public class JDBCRepository implements ShopRepository {
     private List<Product> productList = new ArrayList<>();
     private List<Customer> customerList = new ArrayList<>();
     private List<OrderLines> orderLinesList = new ArrayList<>();
+    private List<BreakfastBag> breakfastBagsList = new ArrayList<>();
 
     @Override
     //Creates a list of all Orders from database
@@ -69,6 +67,19 @@ public class JDBCRepository implements ShopRepository {
                              "breakfastBasket_id, quantity FROM OrderLines")) {
             while (rs.next()) orderLinesList.add(rsOrderLines(rs));
             return orderLinesList;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    //Creates a list of all BreakfastBags from database
+    @Override
+    public List<BreakfastBag> listBreakfastBag() {
+        try (Connection conn = dataSource.getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery("SELECT  id, name FROM BreakfastBags")) {
+            while (rs.next()) breakfastBagsList.add(rsBreakfastBag(rs));
+            return breakfastBagsList;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -170,5 +181,10 @@ public class JDBCRepository implements ShopRepository {
     private OrderLines rsOrderLines(ResultSet rs) throws SQLException {
         return new OrderLines(rs.getInt("id"), rs.getInt("order_id"),
                 rs.getInt("breakfastBaset_id"),rs.getInt("quantity"));
+    }
+
+    //Creates new BrekfastBag from database
+    private BreakfastBag rsBreakfastBag(ResultSet rs) throws SQLException {
+        return new BreakfastBag(rs.getInt("id"),rs.getString("name"));
     }
 }
