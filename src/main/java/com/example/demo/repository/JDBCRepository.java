@@ -4,7 +4,6 @@ import com.example.demo.domain.Order;
 import com.example.demo.domain.Product;
 
 import javax.sql.DataSource;
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,8 +17,8 @@ public class JDBCRepository implements ShopRepository{
     private List<Product> productList = new ArrayList<>();
 
     @Override
-    public List<Order> listOrders() {
-        try (Connection conn = dataSource.getConnection();
+    public void listOrders() {
+     /*   try (Connection conn = dataSource.getConnection();
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery("SELECT id, customerId, orderDate," +
                      "paymentOption, marking, " +
@@ -28,7 +27,7 @@ public class JDBCRepository implements ShopRepository{
             return orderList;
         } catch (SQLException e) {
             throw new RuntimeException(e);
-        }
+        }*/
     }
 
 
@@ -55,11 +54,11 @@ public class JDBCRepository implements ShopRepository{
 
     }
 
-    private Order rsOrder(ResultSet rs) throws SQLException {
+    /*private Order rsOrder(ResultSet rs) throws SQLException {
         return new Order(rs.getInt("id"), rs.getInt("customerId"), rs.getString("orderDate"),
                 rs.getString("paymentOption"), rs.getString("marking"),rs.getString("experationDate"),
                 rs.getString("deliveryDate"), rs.getString("deliveryTime"));
-    }
+    }*/
 
     private Product rsProduct(ResultSet rs) throws SQLException {
         return new Product(rs.getInt("id"), rs.getString("name"), rs.getInt("productCategory"));
