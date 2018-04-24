@@ -241,7 +241,7 @@ public class JDBCRepository implements ShopRepository {
     private Order rsOrder(ResultSet rs) throws SQLException {
         return new Order(rs.getInt("id"), rs.getInt("customerId"), rs.getString("orderDate"),
                 rs.getString("paymentOption"),rs.getBoolean("allergy"), rs.getString("marking"), rs.getString("experationDate"),
-                rs.getString("deliveryDate"), rs.getString("deliveryTime"));
+                rs.getDate("deliveryDate"), rs.getTime("deliveryTime"));
     }
 
     //Creates new Products from database
