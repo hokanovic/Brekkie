@@ -19,11 +19,11 @@ public class brekkieController {
         System.out.println(productName);
         //End of DBConnectionTest
 
-        return new ModelAndView("orderForm");
+        return new ModelAndView("orderForm.html");
         }
 
     @GetMapping("/alternativ")
     public ModelAndView seeBreakfastAlternatives(){
-        return new ModelAndView("displayBags");
+        return new ModelAndView("displayBags.html");
     }
 }
