@@ -10,6 +10,8 @@ public interface ShopRepository {
     List<Product> listProducts();
     List<Customer> listCustomers();
 
+    void addCustomer(int id,String email,String orgId,String adress,String deliveryAdress,
+                     String contactInfo,String name);
     void addOrder(int id, int customerId, String orderDate, String paymentOption, String marking,
                   String experationDate, String deliveryDate, String deliveryTime);
     void addProduct(int id, String name, int productCategori_id);

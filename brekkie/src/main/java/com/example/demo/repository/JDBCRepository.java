@@ -94,6 +94,26 @@ public class JDBCRepository implements ShopRepository {
             throw new RuntimeException(e);
         }
     }
+    //Adds customer to database
+    @Override
+    public void addCustomer(int id,String email,String orgId,String adress,String deliveryAdress,
+                            String contactInfo,String name) {
+        try (Connection conn = dataSource.getConnection();
+             PreparedStatement ps = conn.prepareStatement("INSERT INTO " +
+                     "Customer(id, email, orgId, adress, deliveryAdress, contactInfo, name)" +
+                     "VALUES (?,?,?,?,?,?,?) ", new String[]{"id"})) {
+            ps.setInt(1, id);
+            ps.setString(2, email);
+            ps.setString(3, orgId);
+            ps.setString(4,adress);
+            ps.setString(5,deliveryAdress);
+            ps.setString(6,contactInfo);
+            ps.setString(7,name);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     //Creates new Orders from database
     private Order rsOrder(ResultSet rs) throws SQLException {
