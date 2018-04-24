@@ -24,7 +24,13 @@ public class brekkieController {
         public ModelAndView orderBreakfast() throws SQLException {
         System.out.println("Hello OrderForm!");
 
-        String productName = getProductName();
+        //DBConnectionTest for debugging purposes
+        /*SQLQuery test = new SQLQuery();
+        String productName = test.getProductName();
+        System.out.println(productName);*/
+        //End of DBConnectionTest
+
+        String productName = getName();
 
         System.out.println(productName);
 
@@ -35,14 +41,20 @@ public class brekkieController {
     public ModelAndView seeBreakfastAlternatives() throws SQLException {
         System.out.println("Hello Frukostpåse!");
 
-        String productName = getProductName();
+        //DBConnectionTest for debugging purposes
+        /*SQLQuery test = new SQLQuery();
+        String productName = test.getProductName();
+        System.out.println(productName);*/
+        //End of DBConnectionTest
+
+        String productName = getName();
 
         System.out.println(productName);
 
         return new ModelAndView("displayBags.html");
     }
 
-    public String getProductName() throws SQLException {
+    public String getName() throws SQLException {
         String output = "failed";
         try (Connection connection = dataSource.getConnection()) {
             Statement stmt = connection.createStatement();
