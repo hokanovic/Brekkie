@@ -1,6 +1,5 @@
 package com.example.demo.Controller;
 
-import com.example.demo.DBConnectionTest.SQLQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
