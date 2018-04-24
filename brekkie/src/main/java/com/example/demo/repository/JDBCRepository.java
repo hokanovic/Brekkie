@@ -4,11 +4,7 @@ import com.example.demo.domain.Order;
 import com.example.demo.domain.Product;
 
 import javax.sql.DataSource;
-import java.io.IOException;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,6 +43,21 @@ public class JDBCRepository implements ShopRepository{
     @Override
     public void addOrder(int id, int customerId, String orderDate, String paymentOption, String marking,
                   String experationDate, String deliveryDate, String deliveryTime) {
+        try (Connection conn = dataSource.getConnection();
+             PreparedStatement ps = conn.prepareStatement("INSERT INTO order(id, customerID, orderDate, paymentOption," +
+                     "marking, experationDate, deliveryDate, deliveryTime) VALUES (?,?,?,?,?,?,?,?) ", new String[] {"id"})) {
+            ps.setInt(1, id);
+            ps.setInt(2, customerId);
+            ps.setString(3, orderDate);
+            ps.setString(4,paymentOption);
+            ps.setString(5,marking);
+            ps.setString(6,experationDate);
+            ps.setString(7,deliveryDate);
+            ps.setString(8,deliveryTime);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 
