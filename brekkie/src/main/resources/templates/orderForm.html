@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -10,55 +10,55 @@
 </head>
 <body ng-app="app">
 <div class="form">
-<form ng-controller="formController">
+<form ng-controller="formController" action="#" th:action="@{/frukost}" th:object="${orderForm}" method="post">
     <div class="form-row">
     <div class="form-group col-md-4">
         <label for="inputCompanyName">Företagsnamn</label>
-        <input type="text" class="form-control" id="inputCompanyName" placeholder="Företagsnamn">
+        <input type="text" th:field="*{companyName}" class="form-control" id="inputCompanyName" placeholder="Företagsnamn">
     </div>
     <div class="form-group col-md-4">
         <label for="kontaktPerson">Referens</label>
-        <input type="text" class="form-control" id="kontaktPerson" placeholder="Kontaktperson/referensnummer">
+        <input type="text" th:field="*{reference}" class="form-control" id="kontaktPerson" placeholder="Kontaktperson/referensnummer">
     </div>
 </div>
     <div class="form-row">
         <div class="form-group col-md-4">
             <label for="inputEmail">Epost</label>
-            <input type="email" class="form-control" id="inputEmail" placeholder="Epost">
+            <input type="email" th:field="*{email}"class="form-control" id="inputEmail" placeholder="Epost">
         </div>
         <div class="form-group col-md-4">
             <label for="kontaktInfo">Telefonnummer?</label>
-            <input type="text" class="form-control" id="kontaktInfo" placeholder="Telefonnummer">
+            <input type="text" th:field="*{phoneNumber}" class="form-control" id="kontaktInfo" placeholder="Telefonnummer">
         </div>
     </div>
     <div class="form-row">
         <div class="form-group col-md-4">
             <label for="inputEmail">Leveransdag</label>
-            <input type="datetime-local" class="form-control" id="deliveryDate" placeholder="">
+            <input type="datetime-local" th:field="*{deliveryDate}"class="form-control" id="deliveryDate" placeholder="">
         </div>
         <div class="form-group col-md-4">
             <label for="kontaktInfo">Leveranstid</label>
-            <input type="time" class="form-control" id="deliveryTime" placeholder="">
+            <input type="time" th:field="*{deliveryTime}" class="form-control" id="deliveryTime" placeholder="">
         </div>
     </div>
     <div class="form-group col-md-6">
         <label for="deliveryAdress">Leveransadress</label>
-        <input type="text" class="form-control" id="deliveryAdress" placeholder="Adress">
+        <input type="text" th:field="*{deliveryAdress}" class="form-control" id="deliveryAdress" placeholder="Adress">
     </div>
     <div class="form-row">
         <div class="form-group col-md-4">
             <label for="inputCity">Stad</label>
-            <input type="text" class="form-control" id="inputCity" placeholder="Stad">
+            <input type="text" th:field="*{deliveryPostalTown}" class="form-control" id="inputCity" placeholder="Stad">
         </div>
         <div class="form-group col-md-2">
             <label for="inputZip">Postnummer</label>
-            <input type="text" class="form-control" id="inputZip" placeholder="Postnummer">
+            <input type="text" th:field="*{deliveryPostNumber}" class="form-control" id="inputZip" placeholder="Postnummer">
         </div>
     </div>
     <div class="form-row">
         <div class="form-group col-md-4">
             <label for="inputOrgnr">Organisationsnummer</label>
-            <input type="text" class="form-control" id="inputOrgnr" placeholder="Organisationsnnummer">
+            <input type="text" th:field="*{orgId}" class="form-control" id="inputOrgnr" placeholder="Organisationsnnummer">
         </div>
 
     <div class="form-group">
