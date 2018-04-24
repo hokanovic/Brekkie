@@ -24,6 +24,7 @@ public class brekkieController {
 
     @GetMapping("/alternativ")
     public ModelAndView seeBreakfastAlternatives() throws SQLException {
+        System.out.println("Hello Logs!");
         //DBConnectionTest for debugging purposes
         SQLQuery test = new SQLQuery();
         String productName = test.getProductName();
