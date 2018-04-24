@@ -25,4 +25,6 @@ public interface ShopRepository {
 
     void addOrderLines(int id, int order_id, int breakfastBasket_id, int quantity);
 
+    void addBreakfastBag(int id,String name);
+
 }
