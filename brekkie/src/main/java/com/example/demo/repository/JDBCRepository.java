@@ -187,6 +187,20 @@ public class JDBCRepository implements ShopRepository {
         }
     }
 
+    //Adds ProductCategory to database
+    @Override
+    public void addProductCategory(int id, String name) {
+        try (Connection conn = dataSource.getConnection();
+             PreparedStatement ps = conn.prepareStatement("INSERT INTO" +
+                     "ProductCategory(id, name VALUES (?,?) ", new String[]{"id"})) {
+            ps.setInt(1, id);
+            ps.setString(2,name);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     //Creates new Orders from database
     private Order rsOrder(ResultSet rs) throws SQLException {
         return new Order(rs.getInt("id"), rs.getInt("customerId"), rs.getString("orderDate"),

@@ -29,4 +29,6 @@ public interface ShopRepository {
 
     void addBreakfastBag(int id,String name);
 
+    void addProductCategory(int id,String name);
+
 }
