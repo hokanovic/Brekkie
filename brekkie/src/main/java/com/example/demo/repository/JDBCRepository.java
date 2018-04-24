@@ -66,7 +66,7 @@ public class JDBCRepository implements ShopRepository {
         try (Connection conn = dataSource.getConnection();
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery("SELECT  id, order_id," +
-                             "breakfastBasket_id, quantity FROM OrderLines")) {
+                     "breakfastBasket_id, quantity FROM OrderLines")) {
             while (rs.next()) orderLinesList.add(rsOrderLines(rs));
             return orderLinesList;
         } catch (SQLException e) {
@@ -99,6 +99,7 @@ public class JDBCRepository implements ShopRepository {
             throw new RuntimeException(e);
         }
     }
+
     //Creates a list of all BreakfastBag_ProductCategorys from database
     @Override
     public List<BreakfastBag_ProductCategory> listbreakfastBag_ProductCategory() {
@@ -150,10 +151,11 @@ public class JDBCRepository implements ShopRepository {
             throw new RuntimeException(e);
         }
     }
+
     //Adds customer to database
     @Override
-    public void addCustomer(int id,String email,String orgId,String adress,String deliveryAdress,
-                            String contactInfo,String name) {
+    public void addCustomer(int id, String email, String orgId, String adress, String deliveryAdress,
+                            String contactInfo, String name) {
         try (Connection conn = dataSource.getConnection();
              PreparedStatement ps = conn.prepareStatement("INSERT INTO " +
                      "Customer(id, email, orgId, adress, deliveryAdress, contactInfo, name)" +
@@ -161,10 +163,10 @@ public class JDBCRepository implements ShopRepository {
             ps.setInt(1, id);
             ps.setString(2, email);
             ps.setString(3, orgId);
-            ps.setString(4,adress);
-            ps.setString(5,deliveryAdress);
-            ps.setString(6,contactInfo);
-            ps.setString(7,name);
+            ps.setString(4, adress);
+            ps.setString(5, deliveryAdress);
+            ps.setString(6, contactInfo);
+            ps.setString(7, name);
             ps.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -180,8 +182,8 @@ public class JDBCRepository implements ShopRepository {
                      "VALUES (?,?,?,?) ", new String[]{"id"})) {
             ps.setInt(1, id);
             ps.setInt(2, order_id);
-            ps.setInt(3,breakfastBasket_id);
-            ps.setInt(3,quantity);
+            ps.setInt(3, breakfastBasket_id);
+            ps.setInt(3, quantity);
             ps.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -195,7 +197,7 @@ public class JDBCRepository implements ShopRepository {
              PreparedStatement ps = conn.prepareStatement("INSERT INTO" +
                      "BreakfastBag(id, name VALUES (?,?) ", new String[]{"id"})) {
             ps.setInt(1, id);
-            ps.setString(2,name);
+            ps.setString(2, name);
             ps.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -209,7 +211,23 @@ public class JDBCRepository implements ShopRepository {
              PreparedStatement ps = conn.prepareStatement("INSERT INTO" +
                      "ProductCategory(id, name VALUES (?,?) ", new String[]{"id"})) {
             ps.setInt(1, id);
-            ps.setString(2,name);
+            ps.setString(2, name);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    //Adds BreakfastBag_ProductCategory to database
+    @Override
+    public void addBreakfastBag_ProductCategory(int id, int Breakfastbag_FK,int ProductCategory_FK) {
+        try (Connection conn = dataSource.getConnection();
+             PreparedStatement ps = conn.prepareStatement("INSERT INTO" +
+                     "BreakfastBag_ProductCategory(id, BreakfastBag_FK, ProductCategory_FK" +
+                     " VALUES (?,?,?) ", new String[]{"id"})) {
+            ps.setInt(1, id);
+            ps.setInt(2, Breakfastbag_FK);
+            ps.setInt(3, ProductCategory_FK);
             ps.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -222,6 +240,7 @@ public class JDBCRepository implements ShopRepository {
                 rs.getString("paymentOption"), rs.getString("marking"), rs.getString("experationDate"),
                 rs.getString("deliveryDate"), rs.getString("deliveryTime"));
     }
+
     //Creates new Products from database
     private Product rsProduct(ResultSet rs) throws SQLException {
         return new Product(rs.getInt("id"), rs.getString("name"), rs.getInt("productCategory"));
@@ -229,25 +248,25 @@ public class JDBCRepository implements ShopRepository {
 
     //Creates new Customer from database
     private Customer rsCustomer(ResultSet rs) throws SQLException {
-        return new Customer(rs.getInt("id"),rs.getString("email"),rs.getString("orgId"),
-                rs.getString("adress"),rs.getString("deliveryAdress"),
+        return new Customer(rs.getInt("id"), rs.getString("email"), rs.getString("orgId"),
+                rs.getString("adress"), rs.getString("deliveryAdress"),
                 rs.getString("contactInfo"), rs.getString("name"));
     }
 
     //Creates new OrderLines from database
     private OrderLines rsOrderLines(ResultSet rs) throws SQLException {
         return new OrderLines(rs.getInt("id"), rs.getInt("order_id"),
-                rs.getInt("breakfastBaset_id"),rs.getInt("quantity"));
+                rs.getInt("breakfastBaset_id"), rs.getInt("quantity"));
     }
 
     //Creates new BrekfastBag from database
     private BreakfastBag rsBreakfastBag(ResultSet rs) throws SQLException {
-        return new BreakfastBag(rs.getInt("id"),rs.getString("name"));
+        return new BreakfastBag(rs.getInt("id"), rs.getString("name"));
     }
 
     //Creates new ProductCategory from database
     private ProductCategory rsProductCategory(ResultSet rs) throws SQLException {
-        return new ProductCategory(rs.getInt("id"),rs.getString("name"));
+        return new ProductCategory(rs.getInt("id"), rs.getString("name"));
     }
 
     //Creates new BreakfastBag_ProductCategoryList from database
