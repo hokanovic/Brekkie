@@ -12,13 +12,33 @@
 <div class="form">
 <form ng-controller="formController">
     <div class="form-row">
+    <div class="form-group col-md-4">
+        <label for="inputCompanyName">Företagsnamn</label>
+        <input type="text" class="form-control" id="inputCompanyName" placeholder="Företagsnamn">
+    </div>
+    <div class="form-group col-md-4">
+        <label for="kontaktPerson">Referens</label>
+        <input type="text" class="form-control" id="kontaktPerson" placeholder="Kontaktperson/referensnummer">
+    </div>
+</div>
+    <div class="form-row">
         <div class="form-group col-md-4">
-            <label for="inputCompanyName">Företagsnamn</label>
-            <input type="text" class="form-control" id="inputCompanyName" placeholder="Företagsnamn">
+            <label for="inputEmail">Epost</label>
+            <input type="email" class="form-control" id="inputEmail" placeholder="Epost">
         </div>
         <div class="form-group col-md-4">
-            <label for="kontaktPerson">Referens</label>
-            <input type="text" class="form-control" id="kontaktPerson" placeholder="Kontaktperson/referensnummer">
+            <label for="kontaktInfo">Telefonnummer?</label>
+            <input type="text" class="form-control" id="kontaktInfo" placeholder="Telefonnummer">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label for="inputEmail">Leveransdag</label>
+            <input type="datetime-local" class="form-control" id="deliveryDate" placeholder="">
+        </div>
+        <div class="form-group col-md-4">
+            <label for="kontaktInfo">Leveranstid</label>
+            <input type="time" class="form-control" id="deliveryTime" placeholder="">
         </div>
     </div>
     <div class="form-group col-md-6">
@@ -35,6 +55,12 @@
             <input type="text" class="form-control" id="inputZip" placeholder="Postnummer">
         </div>
     </div>
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label for="inputOrgnr">Organisationsnummer</label>
+            <input type="text" class="form-control" id="inputOrgnr" placeholder="Organisationsnnummer">
+        </div>
+
     <div class="form-group">
         <div class="form-check">
             <input class="form-check-input" ng-click="checkboxClick()" type="checkbox" value="" id="defaultCheck1"  >
@@ -75,7 +101,7 @@
             <textarea class="form-control" id="allergyMessage" rows="3" placeholder="Ange allergier här"></textarea>
         </div>
     <div class="form-row">
-    <button type="submit" class="btn btn-primary btn-block">Beställ</button>
+    <button type="submit" class="btn btn-primary">Beställ</button>
     </div>
 
 </form>

@@ -5,16 +5,20 @@ public class Order {
     private int customerId;
     private String orderDate;
     private String paymentOption;
+    private boolean allergy;
     private String marking;
     private String experationDate;
     private String deliveryDate;
     private String deliveryTime;
 
-    public Order(int id, int customerId, String orderDate, String paymentOption, String marking, String experationDate, String deliveryDate, String deliveryTime) {
+    public Order(int id, int customerId, String orderDate,
+                 String paymentOption, boolean allergy, String marking,
+                 String experationDate, String deliveryDate, String deliveryTime) {
         this.id = id;
         this.customerId = customerId;
         this.orderDate = orderDate;
         this.paymentOption = paymentOption;
+        this.allergy = allergy;
         this.marking = marking;
         this.experationDate = experationDate;
         this.deliveryDate = deliveryDate;
@@ -51,6 +55,14 @@ public class Order {
 
     public void setPaymentOption(String paymentOption) {
         this.paymentOption = paymentOption;
+    }
+
+    public boolean isAllergy() {
+        return allergy;
+    }
+
+    public void setAllergy(boolean allergy) {
+        this.allergy = allergy;
     }
 
     public String getMarking() {

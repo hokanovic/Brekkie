@@ -2,22 +2,34 @@ package com.example.demo.domain;
 
 public class Customer {
     private int id;
-    private String emai;
+    private String companyName;
     private String orgId;
-    private String adress;
+    private String reference;
+    private String phoneNumber;
+    private String email;
+    private String invoiceAdress;
+    private String invoicePostalTown;
+    private String invoicePostNumber;
     private String deliveryAdress;
-    private String contactInfo;
-    private String name;
+    private String deliveryPostalTown;
+    private String deliveryPostNumber;
 
-
-    public Customer(int id, String emai, String orgId, String adress, String deliveryAdress, String contactInfo, String name) {
+    public Customer(int id, String companyName, String orgId, String reference,
+                    String phoneNumber, String email, String invoiceAdress,
+                    String invoicePostalTown, String invoicePostNumber, String deliveryAdress,
+                    String deliveryPostalTown, String deliveryPostNumber) {
         this.id = id;
-        this.emai = emai;
+        this.companyName = companyName;
         this.orgId = orgId;
-        this.adress = adress;
+        this.reference = reference;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.invoiceAdress = invoiceAdress;
+        this.invoicePostalTown = invoicePostalTown;
+        this.invoicePostNumber = invoicePostNumber;
         this.deliveryAdress = deliveryAdress;
-        this.contactInfo = contactInfo;
-        this.name = name;
+        this.deliveryPostalTown = deliveryPostalTown;
+        this.deliveryPostNumber = deliveryPostNumber;
     }
 
     public int getId() {
@@ -28,12 +40,12 @@ public class Customer {
         this.id = id;
     }
 
-    public String getEmai() {
-        return emai;
+    public String getCompanyName() {
+        return companyName;
     }
 
-    public void setEmai(String emai) {
-        this.emai = emai;
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
     }
 
     public String getOrgId() {
@@ -44,35 +56,75 @@ public class Customer {
         this.orgId = orgId;
     }
 
-    public String getAdress() {
-        return adress;
+    public String getReference() {
+        return reference;
     }
 
-    public void setAdress(String adress) {
-        this.adress = adress;
+    public void setReference(String reference) {
+        this.reference = reference;
     }
 
-    public String getShippingAdress() {
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getInvoiceAdress() {
+        return invoiceAdress;
+    }
+
+    public void setInvoiceAdress(String invoiceAdress) {
+        this.invoiceAdress = invoiceAdress;
+    }
+
+    public String getInvoicePostalTown() {
+        return invoicePostalTown;
+    }
+
+    public void setInvoicePostalTown(String invoicePostalTown) {
+        this.invoicePostalTown = invoicePostalTown;
+    }
+
+    public String getInvoicePostNumber() {
+        return invoicePostNumber;
+    }
+
+    public void setInvoicePostNumber(String invoicePostNumber) {
+        this.invoicePostNumber = invoicePostNumber;
+    }
+
+    public String getDeliveryAdress() {
         return deliveryAdress;
     }
 
-    public void setShippingAdress(String deliveryAdress) {
+    public void setDeliveryAdress(String deliveryAdress) {
         this.deliveryAdress = deliveryAdress;
     }
 
-    public String getContactInfo() {
-        return contactInfo;
+    public String getDeliveryPostalTown() {
+        return deliveryPostalTown;
     }
 
-    public void setContactInfo(String contactInfo) {
-        this.contactInfo = contactInfo;
+    public void setDeliveryPostalTown(String deliveryPostalTown) {
+        this.deliveryPostalTown = deliveryPostalTown;
     }
 
-    public String getName() {
-        return name;
+    public String getDeliveryPostNumber() {
+        return deliveryPostNumber;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setDeliveryPostNumber(String deliveryPostNumber) {
+        this.deliveryPostNumber = deliveryPostNumber;
     }
 }
