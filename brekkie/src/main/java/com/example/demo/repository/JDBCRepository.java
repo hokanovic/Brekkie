@@ -15,6 +15,7 @@ public class JDBCRepository implements ShopRepository {
     private List<OrderLines> orderLinesList = new ArrayList<>();
     private List<BreakfastBag> breakfastBagsList = new ArrayList<>();
     private List<ProductCategory> productCategoryList = new ArrayList<>();
+    private List<BreakfastBag_ProductCategory> breakfastBag_ProductCategoryList = new ArrayList<>();
 
     @Override
     //Creates a list of all Orders from database
@@ -94,6 +95,20 @@ public class JDBCRepository implements ShopRepository {
              ResultSet rs = stmt.executeQuery("SELECT  id, name FROM BreakfastBags")) {
             while (rs.next()) breakfastBagsList.add(rsBreakfastBag(rs));
             return breakfastBagsList;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    //Creates a list of all BreakfastBag_ProductCategorys from database
+    @Override
+    public List<BreakfastBag_ProductCategory> listbreakfastBag_ProductCategory() {
+        try (Connection conn = dataSource.getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery("SELECT  id, " +
+                     "Breakfastbag_FK, " +
+                     "ProductCategory_FK FROM BreakfastBag_ProductCategory")) {
+            while (rs.next()) breakfastBag_ProductCategoryList.add(rsBreakfastBag_ProductCategoryList(rs));
+            return breakfastBag_ProductCategoryList;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -233,5 +248,12 @@ public class JDBCRepository implements ShopRepository {
     //Creates new ProductCategory from database
     private ProductCategory rsProductCategory(ResultSet rs) throws SQLException {
         return new ProductCategory(rs.getInt("id"),rs.getString("name"));
+    }
+
+    //Creates new BreakfastBag_ProductCategoryList from database
+    private BreakfastBag_ProductCategory rsBreakfastBag_ProductCategoryList(ResultSet rs)
+            throws SQLException {
+        return new BreakfastBag_ProductCategory(rs.getInt("id"),
+                rs.getInt("breakfastBag_FK"), rs.getInt("productCategory_FK"));
     }
 }
