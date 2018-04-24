@@ -2,6 +2,7 @@ package com.example.demo.repository;
 
 import com.example.demo.domain.Customer;
 import com.example.demo.domain.Order;
+import com.example.demo.domain.OrderLines;
 import com.example.demo.domain.Product;
 
 import javax.sql.DataSource;
@@ -14,6 +15,7 @@ public class JDBCRepository implements ShopRepository {
     private List<Order> orderList = new ArrayList<>();
     private List<Product> productList = new ArrayList<>();
     private List<Customer> customerList = new ArrayList<>();
+    private List<OrderLines> orderLinesList = new ArrayList<>();
 
     @Override
     //Creates a list of all Orders from database
@@ -53,6 +55,20 @@ public class JDBCRepository implements ShopRepository {
                      " contactInfo, name FROM Customer")) {
             while (rs.next()) customerList.add(rsCustomer(rs));
             return customerList;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    //Creates a list of all OrderLines from database
+    @Override
+    public List<OrderLines> listOrderLines() {
+        try (Connection conn = dataSource.getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery("SELECT  id, order_id," +
+                             "breakfastBasket_id, quantity FROM OrderLines")) {
+            while (rs.next()) orderLinesList.add(rsOrderLines(rs));
+            return orderLinesList;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -131,5 +147,11 @@ public class JDBCRepository implements ShopRepository {
         return new Customer(rs.getInt("id"),rs.getString("email"),rs.getString("orgId"),
                 rs.getString("adress"),rs.getString("deliveryAdress"),
                 rs.getString("contactInfo"), rs.getString("name"));
+    }
+
+    //Creates new OrderLines from database
+    private OrderLines rsOrderLines(ResultSet rs) throws SQLException {
+        return new OrderLines(rs.getInt("id"), rs.getInt("order_id"),
+                rs.getInt("breakfastBaset_id"),rs.getInt("quantity"));
     }
 }
