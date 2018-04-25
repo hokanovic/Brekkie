@@ -2,6 +2,7 @@ package com.example.demo.DBConnectionTest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -9,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+@Component
 public class SQLQuery {
     @Value("${spring.datasource.url}")
     public String dbUrl;
